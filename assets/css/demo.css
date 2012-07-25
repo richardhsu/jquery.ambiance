@@ -1,0 +1,29 @@
+/*
+ * Demo Stylesheet for Ambiance - Notification Plugin for jQuery
+ * Copyright (c) 2012 Richard Hsu
+ */
+ 
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+} 
+
+.block {
+  display: block;
+  padding: 10px;
+  background-color: #EEEEEE;
+  margin: 5px 0;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.ambiance-custom {
+  background: #000000;
+  color: #00FF00;
+  padding: 10px;
+  margin-right: 100px;
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}

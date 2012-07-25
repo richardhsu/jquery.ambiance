@@ -1,0 +1,34 @@
+Ambiance - jQuery Notification Plugin
+=============
+
+This is my first plugin for jQuery and I decided to try and make this after
+playing around with jQuery for a bit. I just learned jQuery so please feel free
+to let me know any issues there are with the plugin. Thank you!
+
+Download of Files
+-------
+
+The files are located in the `assets` folder of this repository. I have it
+organized so that this can also be the demonstration page for the Github page.
+The download links are also included on the documentation page which you can go
+to below.
+
+Documentation and Demonstrations
+-------
+
+Go to http://richardhsu.github.com/jquery.ambiance to view the documentation and
+demonstrations. The page also has a description of all the parameters and of 
+course examples of different parameter settings. 
+
+When you call the function it sets off the notification so you can use this at 
+the end of an AJAX call or just on click events as shown in the demonstration 
+page. That's it! Feel free to contact me with any feedback, comments, issues, or
+fork the project and pull request with changes! Thanks!
+
+Installation
+-------
+
+I'm sure most people know how to install jQuery plugins but if you don't all you
+need to do is include the CSS `jquery.ambiance.css` and JavaScript 
+`jquery.ambiance.js` files in your website directory and properly link them in
+your website templates. Feel free to contact me with questions.

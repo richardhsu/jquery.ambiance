@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<head>
+ <title>jQuery Ambiance Plugin</title>
+ <script src="assets/js/jquery-1.7.2.js" type="text/javascript"></script>
+ 
+ <!-- Ambiance Plugin Assets -->
+ <link href="assets/css/jquery.ambiance.css" rel="stylesheet" type="text/css">
+ <script src="assets/js/jquery.ambiance.js" type="text/javascript"></script>
+
+ <!-- Demo Assets -->
+ <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+ <link href="assets/css/demo.css" rel="stylesheet" type="text/css">
+ <script src="assets/js/demo.js" type="text/javascript"></script>
+
+</head>  
+<body>  
+  <h1>Ambiance Plugin for jQuery 1.7.2+ (Notification System)</h1>
+  <p>The following demonstration page will hopefully show you all the available features of Ambiance.</p>
+  <h2>Basic Overview</h2>
+  <p>Ambiance allows you to create notifications on the fly by just calling the function and providing some information. The following parameters exist:</p>
+  <table class="table table-striped table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th class="nowrap">Value Type</th>
+        <th class="nowrap">Default Value</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>message</code></td>
+        <td>JS Object</td>
+        <td><code>""</code></td>
+        <td>This you should pass in! You can pass it any type of object, the function allows JavaScript objects or HTML code.</td>
+      </tr>
+      <tr>
+        <td><code>title</code></td>
+        <td>String</td>
+        <td><code>""</code></td>
+        <td>This is the title of the notification. It is styled as being bold and will be the first line of the notification. If you leave this out, no title will show up.</td>
+      </tr>
+      <tr>
+        <td><code>type</code></td>
+        <td>String</td>
+        <td><code>"default"</code></td>
+        <td>This is the type of notification. The plugin provides 3 base types: <code>"default"</code>, <code>"success"</code>, and <code>"error"</code> which you can pass in. You can also create your own types as well and extend it to style how you'd like. Just define in your CSS a class <code>"ambiance-name"</code> where name is the name of the type you want to create. For example if we want to create an <code>"info"</code> type we would create a class <code>"ambiance-info"</code> and in the JavaScript we can specify the type as <code>"info"</code> and the styling will apply.</td>
+      </tr>
+      <tr>
+        <td><code>permanent</code></td>
+        <td>Boolean</td>
+        <td><code>false</code></td>
+        <td>This boolean determines whether the notification can be closed or not. Permanent notifications will remain on the page as long as the user is on the page. Non-permanent notifications will have a close button for the user to remove it.</td>
+      </tr>
+      <tr>
+        <td><code>timeout</code></td>
+        <td>Integer</td>
+        <td><code>2</code></td>
+        <td>This is the number of seconds for the notification to be displayed before either the fade out takes place or it disappears. Use the value of <code>0</code> to indicate that the notification should persist, this allows you to create non-permanent notifications that require the user to close it.</td>
+      </tr>
+      <tr>
+        <td><code>fade</code></td>
+        <td>Boolean</td>
+        <td><code>true</code></td>
+        <td>This determines whether or not the item will fade out of view or not. If the <code>permanent</code> parameter is <code>true</code> then this will not take effect.</td>
+      </tr>
+      <tr>
+        <td><code>width</code></td>
+        <td>Integer</td>
+        <td><code>300</code></td>
+        <td>This is the width of the notification box. You can customize this on the fly or with custom CSS, either way is fine; however, if you do not specify it then the default will override to be <code>300</code>.</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h2>Demonstration Overview</h2>
+  <p>Each demonstration will provide the code and a button to allow you to see the notification system in action. The following is how all the notifications are triggered (All placed when the document is ready):</p>
+  <pre class="block">
+$('#demo1').click(function () {
+  $.ambiance({message: "This is a test notification."});
+});</pre>
+  <br />
+  <h3>Demo 1</h3>
+  <p><em>Basic usage with default settings and no title.</em></p>
+  <pre class="block">$.ambiance({message: "This is a test notification."});</pre>
+  <button id="demo1" class="btn">Try out the Demo</button>
+  <br /><br />
+  <h3>Demo 2</h3>
+  <p><em>Defining title and message for success.</em></p>
+  <pre class="block">
+$.ambiance({message: "We just sent a notification!", 
+            title: "Success!",
+            type: "success"});</pre>
+  <button id="demo2" class="btn">Try out the Demo</button>
+  <br /><br />
+  <h3>Demo 3</h3>
+  <p><em>Non-fading notification that is an error without title.</em></p>
+  <pre class="block">
+$.ambiance({message: "Uh oh the fading is gone!", 
+            type: "error",
+            fade: false});</pre>
+  <button id="demo3" class="btn">Try out the Demo</button>
+  <br /><br />
+  <h3>Demo 4</h3>
+  <p><em>Long timeout with fading and a long width.</em></p>
+  <pre class="block">
+$.ambiance({message: "Oh man this is a really long notification!", 
+            width: 1000,
+            timeout: 10});</pre>
+  <button id="demo4" class="btn">Try out the Demo</button>
+  <br /><br />
+  <h3>Demo 5</h3>
+  <p><em>JS Object for the message and permanent. Note: Refresh to remove it.</em></p>
+  <pre class="block">
+var button = $(window.document.createElement('button'))
+              .addClass("btn btn-primary")
+              .html("BUTTON IN NOTIFICATION!");
+$.ambiance({message: button,
+            permanent: true});</pre>
+  <button id="demo5" class="btn">Try out the Demo</button>
+  <br /><br />
+  <h3>Demo 6</h3>
+  <p><em>Permanent but fading and timeout is actually just permanent. Again fade and timeout mean nothing if the notification is permanent!</em></p>
+  <pre class="block">
+$.ambiance({message: "This is permanent! Seriously!",
+            permanent: true,
+            fade: true,
+            timeout: 1});</pre>
+  <button id="demo6" class="btn">Try out the Demo</button>
+  <br /><br />
+  <h3>Demo 7</h3>
+  <p><em>Timeout set to 0, not permanent and fading! (Fading doesn't matter if timeout is 0!)</em></p>
+  <pre class="block">
+$.ambiance({message: "You have to close this to remove it. Haha!",
+            fade: true,
+            timeout: 0});</pre>
+  <button id="demo7" class="btn">Try out the Demo</button>
+  <br /><br />
+  <h3>Demo 8</h3>
+  <p><em>Custom CSS Type</em></p>
+  <strong>CSS:</strong>
+  <pre class="block">
+.ambiance-custom {
+  background: #000000;
+  color: #00FF00;
+  padding: 10px;
+  margin-right: 100px;
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}</pre>
+  <strong>JavaScript:</strong>
+  <pre class="block">
+$.ambiance({message: "Custom styling, you have to define everything!",
+            type: "custom",
+            timeout: 0});</pre>
+  <button id="demo8" class="btn">Try out the Demo</button>
+  <br /><br />
+  <h2>Download Links</h2>
+  <p>Because I want the repository to be consistent, I don't want to have multiple locations of the JavaScript and CSS files so they are included in the <code>assets</code> folder but here are the links for easy access! You can right click on the file and save the file.</p>
+  <a href="assets/js/jquery.ambiance.js" class="btn btn-info">jquery.ambiance.js</a> <a href="assets/css/jquery.ambiance.css" class="btn btn-info">jquery.ambiance.css</a>
+  <br /><br />
+  <h2>Thank You and Final Words</h2>
+  <p>Thank you for trying out my first jQuery plugin! I know there may be similar ones out there but I thought since I'm just starting with jQuery that I'd try something simple that I was already trying to have in an application I was trying out! Have fun using it and please feel free to let me know your thoughts! I'd love to hear feedback, comments, suggestions, or anything about the plugin! Feedback on my coding is appreciated as well!</p>
+  <a href="http://github.com/richardhsu/jquery.ambiance" class="btn btn-primary">Ambiance Plugin Page on GitHub</a>
+  <a href="http://github.com/richardhsu" class="btn btn-primary">My GitHub Page</a>
+  <br /><br />
+</body>  
+</html>  
