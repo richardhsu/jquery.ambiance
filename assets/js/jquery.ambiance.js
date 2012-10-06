@@ -1,6 +1,6 @@
 /*!
  * Ambiance - Notification Plugin for jQuery
- * Version 1.0.0
+ * Version 1.0.1
  * @requires jQuery v1.7.2
  *
  * Copyright (c) 2012 Richard Hsu
@@ -83,4 +83,5 @@ $(document).ready(function() {
 // Deal with close event on a note.
 $(document).on("click", ".ambiance-close", function () {
   $(this).parent().remove();
+  return false;
 });
