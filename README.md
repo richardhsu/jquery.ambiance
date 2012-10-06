@@ -5,9 +5,10 @@ This project is no longer in development. It was just a quick side
 project to learn jQuery/JavaScript and for use in another side project I
 was working on. If you want a really awesome notification plugin for 
 jQuery that is actively maintained check out https://github.com/needim/noty.
-You are free to still fork, favorite, create issues and I will still try to
-entertain the issues I can, but I will leave this project in this form which
-is a very basic but I believe effective jQuery notification system. Thank you.
+You are free to still fork, favorite, and create issues and I will still try to
+entertain the issues I can. I will be leaving this project in this form, which
+is a very basic, but I believe it is still an effective jQuery notification 
+system that is simple to use. Thank you for your support.
 
 ---
 
