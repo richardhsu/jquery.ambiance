@@ -20,7 +20,9 @@
       permanent: false,
       timeout: 2,
       fade: true,
-      width: 300
+      width: 300,
+      // Additional user-defined class for future reference
+      extraClass: null
     };
 
     var options = $.extend(defaults, options);
@@ -28,8 +30,13 @@
 
     // Construct the new notification.
     var note = $(window.document.createElement('div'))
-                .addClass("ambiance")
-                .addClass("ambiance-" + options['type']);
+        .addClass("ambiance")
+        .addClass("ambiance-" + options['type']);
+
+    //Add additional custom class for future selection of the new note from outside.
+    if (options['extraClass'] != null) {
+      note.addClass(options['extraClass']);
+    }
 
     note.css({width: options['width']});
 
@@ -37,16 +44,16 @@
     // Deal with adding the close feature or not.
     if (!options['permanent']) {
       note.prepend($(window.document.createElement('a'))
-                    .addClass("ambiance-close")
-                    .attr("href", "#_")
-                    .html("&times;"));
+          .addClass("ambiance-close")
+          .attr("href", "#_")
+          .html("&times;"));
     }
 
     // Deal with adding the title if given.
     if (options['title'] !== "") {
       note.append($(window.document.createElement('div'))
-                   .addClass("ambiance-title")
-                   .append(options['title']));
+          .addClass("ambiance-title")
+          .append(options['title']));
     }
 
     // Append the message (this can also be HTML or even an object!).
@@ -75,7 +82,7 @@ jQuery(document).ready(function() {
   // Deal with adding the notification area to the page.
   if (jQuery("#ambiance-notification").length == 0) {
     var note_area = jQuery(window.document.createElement('div'))
-                     .attr("id", "ambiance-notification");
+        .attr("id", "ambiance-notification");
     jQuery('body').append(note_area);
   }
 });
