@@ -1,4 +1,7 @@
 /*
+ * Modificado por José Javier Fernández Mendoza
+ * Versin 1.0.2
+ * Original:
  * Stylesheet for Ambiance - Notification Plugin for jQuery
  * Version 1.0.1
  *
@@ -20,7 +23,11 @@
 
 /* Built in custom styling for the notifications. */
 .ambiance-title {
+  font-weight: bolder;
+}
+.ambiance-link {
   font-weight: bold;
+  text-decoration:none;
 }
 
 .ambiance {
