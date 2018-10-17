@@ -1,4 +1,7 @@
 /*!
+ * Modificado por José Javier Fernández Mendoza
+ * Versin 1.0.2
+ * Original:
  * Ambiance - Notification Plugin for jQuery
  * Version 1.0.1
  * @requires jQuery v1.7.2
@@ -16,13 +19,13 @@
     var defaults = {
       title: "",
       message: "",
+	  link: "",
+	  linkname: "",
       type: "default",
       permanent: false,
       timeout: 2,
       fade: true,
-      width: 300,
-      // Additional user-defined class for future reference
-      extraClass: null
+      width: 300
     };
 
     var options = $.extend(defaults, options);
@@ -30,13 +33,8 @@
 
     // Construct the new notification.
     var note = $(window.document.createElement('div'))
-        .addClass("ambiance")
-        .addClass("ambiance-" + options['type']);
-
-    //Add additional custom class for future selection of the new note from outside.
-    if (options['extraClass'] != null) {
-      note.addClass(options['extraClass']);
-    }
+                .addClass("ambiance")
+                .addClass("ambiance-" + options['type']);
 
     note.css({width: options['width']});
 
@@ -44,20 +42,26 @@
     // Deal with adding the close feature or not.
     if (!options['permanent']) {
       note.prepend($(window.document.createElement('a'))
-          .addClass("ambiance-close")
-          .attr("href", "#_")
-          .html("&times;"));
+                    .addClass("ambiance-close")
+                    .attr("href", "#_")
+                    .html("&times;"));
     }
 
     // Deal with adding the title if given.
     if (options['title'] !== "") {
       note.append($(window.document.createElement('div'))
-          .addClass("ambiance-title")
-          .append(options['title']));
+                   .addClass("ambiance-title")
+                   .append(options['title']));
     }
+	
 
     // Append the message (this can also be HTML or even an object!).
     note.append(options['message']);
+	if (options['link'] !== "") {
+      note.append($(window.document.createElement('div'))
+                   .addClass("ambiance-link")
+                   .append("<a href='"+options['link']+"'>"+(linkname!=""?linkname:"Enlace")+"</a>"));
+    }
 
     // Add the notification to the notification area.
     note_area.append(note);
@@ -82,7 +86,7 @@ jQuery(document).ready(function() {
   // Deal with adding the notification area to the page.
   if (jQuery("#ambiance-notification").length == 0) {
     var note_area = jQuery(window.document.createElement('div'))
-        .attr("id", "ambiance-notification");
+                     .attr("id", "ambiance-notification");
     jQuery('body').append(note_area);
   }
 });
