@@ -21,6 +21,7 @@
       message: "",
 	  link: "",
 	  linkname: "",
+	  linkblank: false,
       type: "default",
       permanent: false,
       timeout: 2,
@@ -60,7 +61,7 @@
 	if (options['link'] !== "") {
       note.append($(window.document.createElement('div'))
                    .addClass("ambiance-link")
-                   .append("<a href='"+options['link']+"'>"+(linkname!=""?linkname:"Enlace")+"</a>"));
+                   .append("<a href='"+options['link']+"'"+(options['linkblank']?"target='_blank'":"")+">"+(options['linkname']!=""?options['linkname']:"Enlace")+"</a>"));
     }
 
     // Add the notification to the notification area.
