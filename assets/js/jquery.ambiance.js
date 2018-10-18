@@ -19,17 +19,17 @@
     var defaults = {
       title: "",
       message: "",
-	  link: "",
-	  linkName: "",
-	  linkBlank: false,
-	  linkColor: "",
+      link: "",
+      linkName: "",
+      linkBlank: false,
+      linkColor: "",
       type: "default",
       permanent: false,
       timeout: 2,
       fade: true,
       width: 300,
-	  // Additional user-defined class for future reference
-	  extraClass: null
+      // Additional user-defined class for future reference
+      extraClass: null
     };
 
     var options = $.extend(defaults, options);
@@ -37,22 +37,22 @@
 
     // Construct the new notification.
     var note = $(window.document.createElement('div'))
-                .addClass("ambiance")
-                .addClass("ambiance-" + options['type']);
-	//Add additional custom class for future selection of the new note from outside.
+                 .addClass("ambiance")
+                 .addClass("ambiance-" + options['type']);
+
+    //Add additional custom class for future selection of the new note from outside.
     if (options['extraClass'] != null) {
       note.addClass(options['extraClass']);
     }
 
     note.css({width: options['width']});
 
-
     // Deal with adding the close feature or not.
     if (!options['permanent']) {
       note.prepend($(window.document.createElement('a'))
-		  .addClass("ambiance-close")
-		  .attr("href", "#_")
-		  .html("&times;"));
+          .addClass("ambiance-close")
+          .attr("href", "#_")
+          .html("&times;"));
     }
 
     // Deal with adding the title if given.
@@ -61,18 +61,18 @@
           .addClass("ambiance-title")
           .append(options['title']));
     }
-	
+
 
     // Append the message (this can also be HTML or even an object!).
     note.append(options['message']);
-	var link = options['link'].trim();
-	if (link.length>0) {
-	  var target = options['linkBlank'] ? ' target="_blank"' : '';
-	  var linkName = options['linkName'].trim() || "Link";
-	  var linkColor = options['linkColor'].trim()!="" ? ' style="color:'+options['linkColor']+ '"' : '';
+    var link = options['link'].trim();
+    if (link.length > 0) {
+      var target = options['linkBlank'] ? ' target="_blank"' : '';
+      var linkName = options['linkName'].trim() || "Link";
+      var linkColor = options['linkColor'].trim() != "" ? ' style="color:' + options['linkColor'] + '"' : '';
       note.append($(window.document.createElement('div'))
           .addClass("ambiance-link")
-          .append("<a href='"+options['link']+"'"+target+" "+linkColor+">"+linkName+"</a>"));
+          .append("<a href='" + link + "'" + target + " " + linkColor + ">" + linkName + "</a>"));
     }
 
     // Add the notification to the notification area.
