@@ -39,6 +39,10 @@
     var note = $(window.document.createElement('div'))
                 .addClass("ambiance")
                 .addClass("ambiance-" + options['type']);
+	//Add additional custom class for future selection of the new note from outside.
+    if (options['extraClass'] != null) {
+      note.addClass(options['extraClass']);
+    }
 
     note.css({width: options['width']});
 
@@ -46,16 +50,16 @@
     // Deal with adding the close feature or not.
     if (!options['permanent']) {
       note.prepend($(window.document.createElement('a'))
-                    .addClass("ambiance-close")
-                    .attr("href", "#_")
-                    .html("&times;"));
+		  .addClass("ambiance-close")
+		  .attr("href", "#_")
+		  .html("&times;"));
     }
 
     // Deal with adding the title if given.
     if (options['title'] !== "") {
       note.append($(window.document.createElement('div'))
-                   .addClass("ambiance-title")
-                   .append(options['title']));
+          .addClass("ambiance-title")
+          .append(options['title']));
     }
 	
 
@@ -67,8 +71,8 @@
 	  var linkName = options['linkName'].trim() || "Link";
 	  var linkColor = options['linkColor'].trim()!="" ? ' style="color:'+options['linkColor']+ '"' : '';
       note.append($(window.document.createElement('div'))
-                   .addClass("ambiance-link")
-                   .append("<a href='"+options['link']+"'"+target+" "+linkColor+">"+linkName+"</a>"));
+          .addClass("ambiance-link")
+          .append("<a href='"+options['link']+"'"+target+" "+linkColor+">"+linkName+"</a>"));
     }
 
     // Add the notification to the notification area.
