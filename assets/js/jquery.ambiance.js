@@ -20,13 +20,16 @@
       title: "",
       message: "",
 	  link: "",
-	  linkname: "",
-	  linkblank: false,
+	  linkName: "",
+	  linkBlank: false,
+	  linkColor: "",
       type: "default",
       permanent: false,
       timeout: 2,
       fade: true,
-      width: 300
+      width: 300,
+	  // Additional user-defined class for future reference
+	  extraClass: null
     };
 
     var options = $.extend(defaults, options);
@@ -58,10 +61,14 @@
 
     // Append the message (this can also be HTML or even an object!).
     note.append(options['message']);
-	if (options['link'] !== "") {
+	var link = options['link'].trim();
+	if (link.length>0) {
+	  var target = options['linkBlank'] ? ' target="_blank"' : '';
+	  var linkName = options['linkName'].trim() || "Link";
+	  var linkColor = options['linkColor'].trim()!="" ? ' style="color:'+options['linkColor']+ '"' : '';
       note.append($(window.document.createElement('div'))
                    .addClass("ambiance-link")
-                   .append("<a href='"+options['link']+"'"+(options['linkblank']?"target='_blank'":"")+">"+(options['linkname']!=""?options['linkname']:"Enlace")+"</a>"));
+                   .append("<a href='"+options['link']+"'"+target+" "+linkColor+">"+linkName+"</a>"));
     }
 
     // Add the notification to the notification area.
