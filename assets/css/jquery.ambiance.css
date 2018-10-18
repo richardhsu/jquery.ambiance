@@ -25,7 +25,7 @@
 .ambiance-title {
   font-weight: bolder;
 }
-.ambiance-link {
+.ambiance-link a{
   font-weight: bold;
   text-decoration:none;
 }
