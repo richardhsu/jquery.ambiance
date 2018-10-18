@@ -69,6 +69,36 @@
         <td><code>300</code></td>
         <td>This is the width of the notification box. You can customize this on the fly or with custom CSS, either way is fine; however, if you do not specify it then the default will override to be <code>300</code>.</td>
       </tr>
+      <tr>
+        <td><code>link</code></td>
+        <td>String</td>
+        <td><code>""</code></td>
+        <td>Add a link to the bottom of the notification, this should be the URL that you want to link to.</td>
+      </tr>
+      <tr>
+        <td><code>linkName</code></td>
+        <td>String</td>
+        <td><code>"Link"</code></td>
+        <td>Add a name for the link specified in <code>link</code>. This is the text the user sees.</td>
+      </tr>
+      <tr>
+        <td><code>linkBlank</code></td>
+        <td>Boolean</td>
+        <td><code>false</code></td>
+        <td>Whether the link should have a <code>target="_blank"</code> to pop up in a new window.</td>
+      </tr>
+      <tr>
+        <td><code>linkColor</code></td>
+        <td>String</td>
+        <td><code>""</code></td>
+        <td>The style color for the link, this will be added through <code>style="color: {linkColor}"</code> for the link.</td>
+      </tr>
+      <tr>
+        <td><code>extraClass</code></td>
+        <td>String</td>
+        <td><code>null</code></td>
+        <td>Any extra classes you want to add to the notification.</td>
+      </tr>
     </tbody>
   </table>
 
@@ -147,6 +177,19 @@ $.ambiance({message: "You have to close this to remove it. Haha!",
   font-weight: bold;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }</pre>
+  <h3>Demo 9</h3>
+  <p><em>Add a link to the notification to be clicked.</em></p>
+  <pre class="block">
+$.ambiance({message: "Hello, this is a message",
+            type: "error",
+            fade: false,
+            timeout: 10,
+            link: "https://www.google.com",
+            linkName: "Go to Google",
+            linkBlank: true,
+            linkColor: "white"});</pre>
+  <button id="demo9" class="btn">Try out the Demo</button>
+  <br /><br />
   <strong>JavaScript:</strong>
   <pre class="block">
 $.ambiance({message: "Custom styling, you have to define everything!",

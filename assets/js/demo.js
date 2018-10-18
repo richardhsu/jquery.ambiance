@@ -45,4 +45,14 @@ $(document).ready(function() {
                 type: "custom",
                 timeout: 0});
   });
+  $('#demo9').click(function () {
+    $.ambiance({message: "Hello, this is a message",
+                type: "error",
+                fade: false,
+                timeout: 10,
+                link: "https://www.google.com",
+                linkName: "Go to Google",
+                linkBlank: true,
+                linkColor: "white"});
+  });
 });

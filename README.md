@@ -50,4 +50,7 @@ your website templates. Feel free to contact me with questions.
 Changelog
 -------
 
+2018-10-18  [@josejavierfm] Added link for notification with link properties.
+2015-09-01  [@zzgab] Added `extraClass` option to allow future new classes.
+2013-09-30  [@troger] Changed to use jQuery instead of $ to avoid conflicts.
 2012-10-06  Close action will return false and ignore the link location.
